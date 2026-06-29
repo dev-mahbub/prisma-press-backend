@@ -10,6 +10,16 @@ const createToken = (
   return token;
 };
 
+const verifyToken = (token: string, secret: string) => {
+  try {
+    const varifiedToken = jwt.verify(token, secret);
+    return varifiedToken;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
 export const jwtUtils = {
   createToken,
+  verifyToken,
 };

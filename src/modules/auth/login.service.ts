@@ -18,7 +18,12 @@ const loginUserService = async (payload: ILoginPayload) => {
     throw new Error("Password is incorrect");
   }
 
-  const jwtPayload = { name: String, email: String, password: String };
+  const jwtPayload = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  };
 
   const accessToken = jwtUtils.createToken(
     jwtPayload,
