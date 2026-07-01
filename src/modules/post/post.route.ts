@@ -10,11 +10,11 @@ router.post(
   auth(Role.ADMIN, Role.AUTHOR, Role.USER),
   postController.createPost,
 );
-router.post("/", postController.getAllPost);
-router.post("/stats", postController.getPostStats);
-router.post("/:userId", postController.getSinglePost);
-router.post("/:userId", postController.getMyPost);
-router.post("/:userId", postController.updatePost);
-router.post("/:userId", postController.deletePost);
+router.get("/", postController.getAllPost);
+router.get("/stats", postController.getPostStats);
+router.get("/:userId", postController.getSinglePost);
+router.get("/:userId", postController.getMyPost);
+router.patch("/:userId", postController.updatePost);
+router.delete("/:userId", postController.deletePost);
 
 export const postRoutes = router;

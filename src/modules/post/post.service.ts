@@ -7,6 +7,13 @@ const createPostToDB = async (payload: ICreatePostPayload, userId: string) => {
       ...payload,
       authorId: userId,
     },
+  });
+
+  return result;
+};
+
+const getAllPostToDB = async () => {
+  const posts = await prisma.post.findMany({
     include: {
       author: {
         omit: {
@@ -16,11 +23,8 @@ const createPostToDB = async (payload: ICreatePostPayload, userId: string) => {
       comments: true,
     },
   });
-
-  return result;
+  return posts;
 };
-
-const getAllPostToDB = async () => {};
 
 const getSinglePostToDB = async () => {};
 
